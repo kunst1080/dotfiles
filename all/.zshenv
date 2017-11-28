@@ -14,4 +14,4 @@ done
 PATH=$USERPATH:$PATH
 
 # my environment
-[ -e ~/.zshenv.local ] && source ~/.zshenv.local
+[ -e ~/.zshenv.* ] && source ~/.zshenv.*

@@ -75,5 +75,5 @@ fi
 . ~/.aliases
 
 # my environment
-[ -e ~/.zshrc.local ] && source ~/.zshrc.local
+[ -e ~/.zshrc.* ] && source ~/.zshrc.*
 
