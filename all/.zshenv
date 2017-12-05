@@ -14,4 +14,7 @@ done
 PATH=$USERPATH:$PATH
 
 # my environment
-[ -e ~/.zshenv.* ] && source ~/.zshenv.*
+for i in .zshenv.*
+do
+    . $i
+done
