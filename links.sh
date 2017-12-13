@@ -12,11 +12,10 @@ main() {
   echo "ARCH = $ARCH"
   echo
 
+  mkdir -p ~/.vim ~/.vim/tmp ~/.vim/undo
+  
   relinks $ROOT/all .
   relinks $ROOT/$ARCH .
-
-  cp $ROOT/sample.gitconfig $HOME/.gitconfig
-  cp $ROOT/sample.gitconfig.local $HOME/.gitconfig.local
 
   echo
   echo Making links SUCCESS
