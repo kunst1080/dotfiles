@@ -16,6 +16,8 @@ main() {
   
   relinks $ROOT/all .
   relinks $ROOT/$ARCH .
+  relinks $ROOT/config .config
+  [ $# -ge 1 ] && relinks $ROOT/$1 .
 
   echo
   echo Making links SUCCESS
@@ -42,4 +44,4 @@ setARCH() {
   [ "`uname`" = "Darwin" ] && ARCH=mac
 }
 
-main
+main $*

@@ -1,0 +1,16 @@
+! Search key is Control
+! Control is Super
+clear lock
+clear control
+
+! Search Key -> Ctrl
+keycode 133 = Control_L
+! Left Ctrl -> Super
+keycode 37 = Super_L
+!! Right Ctrl -> Super
+!keycode 105 = Super_R
+
+! ---- add ---- !
+add control = Control_L
+! ---- Mouse ---- !
+pointer = 1 2 3 5 4 6 7 8 9 10 11 12
