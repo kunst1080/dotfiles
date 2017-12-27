@@ -29,6 +29,17 @@ setopt hist_ignore_dups     # ignore duplication command history list
 setopt share_history        # share command history data 
 setopt histignorespace
 setopt hist_no_store
+zshaddhistory() {
+    local line=${1%%$'\n'}
+    local cmd=${line%% *}
+    [[ ${#line} -ge 5
+        && ${cmd} != (l|l[sal])
+        && ${cmd} != (c|cd)
+        && ${cmd} != (m|man)
+        && ${cmd} != (todo)
+    ]]
+}
+
 
 # git setting
 zstyle ':vcs_info:git:*' check-for-changes true
@@ -52,7 +63,7 @@ fi
 PROMPT=$'%B%F{${p_color}}%n@%M%f%b %3F%~%f %1v\n$ '
 
 # fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/local/.fzf.zsh ] && source ~/local/.fzf.zsh
 function fzf-history-selection() {
     BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
     CURSOR=$#BUFFER
@@ -75,7 +86,7 @@ fi
 . ~/.aliases
 
 # my environment
-for i in .zshrc.*
+[ -f "~/.zshrc.*" ] && for i in "~/.zshrc.*"
 do
     . $i
 done
