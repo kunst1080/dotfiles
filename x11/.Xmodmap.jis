@@ -1,16 +1,25 @@
-! Search key is Control
-! Control is Super
 clear lock
 clear control
+clear mod4
 
-! Search Key -> Ctrl
-keycode 133 = Control_L
+! ---- Left Side ---- !
+! CapsLock -> Ctrl
+keycode 66 = Control_L
+
+! --- Left Bottom ---- !
 ! Left Ctrl -> Super
 keycode 37 = Super_L
-!! Right Ctrl -> Super
-!keycode 105 = Super_R
+! Muhenkan -> Zenkaku_Hankaku
+keycode 102 = Zenkaku_Hankaku
+
+! ---- Right Bottom ---- !
+! Henkan -> Zenkaku_Hankaku
+keycode 100 = Zenkaku_Hankaku
+! Menu -> Super
+keycode 135 = Super_R
+! Right Ctrl -> Ctrl
+keycode 105 = Control_R
 
 ! ---- add ---- !
-add control = Control_L
-! ---- Mouse ---- !
-pointer = 1 2 3 5 4 6 7 8 9 10 11 12
+add control = Control_L Control_R
+add mod4 = Super_L Super_R
