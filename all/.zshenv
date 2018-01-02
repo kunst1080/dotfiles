@@ -18,7 +18,8 @@ done
 export PATH=$USERPATH:$PATH
 
 # my environment
-[ -f "~/.zshenv.*" ] && for i in "~/.zshenv.*"
+RC=$(find ~ -maxdepth 1 -name ".zshenv.*")
+[ ! -z "$RC" ] && for i in $RC
 do
-    . $i
+  . $i
 done

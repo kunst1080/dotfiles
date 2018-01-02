@@ -86,8 +86,8 @@ fi
 . ~/.aliases
 
 # my environment
-[ -f "~/.zshrc.*" ] && for i in "~/.zshrc.*"
+RC=$(find ~ -maxdepth 1 -name ".zshrc.*")
+[ ! -z "$RC" ] && for i in $RC
 do
-    . $i
+  . $i
 done
-
