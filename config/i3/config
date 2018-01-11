@@ -166,6 +166,10 @@ bar {
         position top
 }
 
+# Screen Shot
+bindsym $mod+Shift+s exec import -window root ~/Pictures/$(date +%Y%m%d%H%M%S).png
+
+# Auto Start
 exec --no-startup-id compton
 exec --no-startup-id fcitx-autostart
 exec --no-startup-id dunst
@@ -173,6 +177,4 @@ exec --no-startup-id parcellite
 exec --no-startup-id volumeicon
 #exec --no-startup-id feh --bg-fill ~/work/wallpaper.jpg
 exec --no-startup-id ~/local/bin/xremap ~/.xremap.conf
-
-# Screen Shot
-bindsym $mod+Shift+s exec import -window root ~/Pictures/$(date +%Y%m%d%H%M%S).png
+exec --no-startup-id [ -x ~/.config/autostart.sh ] && ~/.config/autostart.sh
