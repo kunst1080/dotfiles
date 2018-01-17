@@ -7,6 +7,12 @@ export LS_COLORS="di=01;35:ow=01;31:tw=01;31"
 export RBENV_ROOT=~/local/.rbenv
 export PATH=$RBENV_ROOT/bin:$PATH
 
+# Linuxbrew
+export PATH=$HOME/local/linuxbrew/bin:$PATH
+export MANPATH="$(brew --prefix)/share/man:$MANPATH"
+export INFOPATH="$(brew --prefix)/share/info:$INFOPATH"
+export LD_LIBRARY_PATH="$(brew --prefix)/lib:$LD_LIBRARY_PATH"
+
 # PATH
 for i in sbin bin opt/bin local/bin .conscript/bin anaconda3/bin
 do
