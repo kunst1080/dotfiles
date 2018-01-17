@@ -44,6 +44,7 @@ bindsym $mod+Shift+q kill
 #bindsym $mod+d exec dmenu_run
 #bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -fn 'MigMix 1P-12'"
 bindsym $mod+d exec --no-startup-id rofi -modi drun -show drun -font "MigMix 1P 13"
+bindsym Mod4+d exec --no-startup-id rofi -modi drun -show drun -font "MigMix 1P 13"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -166,6 +167,23 @@ bar {
         position top
 }
 
+# Power management
+set $Locker i3lock && sleep 1
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Pause mode "$mode_system"
+
 # Screen Shot
 bindsym $mod+Shift+s exec import -window root ~/Pictures/$(date +%Y%m%d%H%M%S).png
 
@@ -175,6 +193,6 @@ exec --no-startup-id fcitx-autostart
 exec --no-startup-id dunst
 exec --no-startup-id parcellite
 exec --no-startup-id volumeicon
-#exec --no-startup-id feh --bg-fill ~/work/wallpaper.jpg
+exec --no-startup-id [ -f ~/work/wallpaper.jpg ] && feh --bg-fill ~/work/wallpaper.jpg
 exec --no-startup-id ~/local/bin/xremap ~/.xremap.conf
 exec --no-startup-id [ -x ~/.config/autostart.sh ] && ~/.config/autostart.sh
