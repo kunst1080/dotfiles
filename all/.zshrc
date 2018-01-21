@@ -62,15 +62,14 @@ else
 fi
 PROMPT=$'%B%F{${p_color}}%n@%M%f%b %3F%~%f %1v\n$ '
 
-# fzf
-[ -f ~/local/.fzf.zsh ] && source ~/local/.fzf.zsh
-function fzf-history-selection() {
-    BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
+# peco
+function peco-history-selection() {
+    BUFFER=`history -n -r 1 | awk '!a[$0]++' | peco`
     CURSOR=$#BUFFER
     zle reset-prompt
 }
-zle -N fzf-history-selection
-bindkey '^R' fzf-history-selection
+zle -N peco-history-selection
+bindkey '^R' peco-history-selection
 
 # conoha
 if [ -r ~/.conoha.conf ] ; then
