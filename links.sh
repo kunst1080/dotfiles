@@ -11,8 +11,6 @@ main() {
   setARCH
   echo "ARCH = $ARCH"
   echo
-
-  mkdir -p ~/.vim ~/.vim/tmp ~/.vim/undo
   
   relinks $ROOT/all .
   relinks $ROOT/$ARCH .
