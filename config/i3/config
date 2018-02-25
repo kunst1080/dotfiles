@@ -195,4 +195,4 @@ exec --no-startup-id parcellite
 exec --no-startup-id volumeicon
 exec --no-startup-id [ -f ~/work/wallpaper.jpg ] && feh --bg-fill ~/work/wallpaper.jpg
 exec --no-startup-id ~/local/bin/xremap ~/.xremap.conf
-exec --no-startup-id [ -x ~/.config/autostart.sh ] && ~/.config/autostart.sh
+exec --no-startup-id [ -x ~/bin/autostart.sh ] && ~/bin/autostart.sh
