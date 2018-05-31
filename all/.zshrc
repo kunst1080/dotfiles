@@ -86,7 +86,7 @@ fi
 
 # my environment
 RC=$(find ~ -maxdepth 1 -name ".zshrc.*")
-[ ! -z "$RC" ] && for i in $RC
+[ ! -z "$RC" ] && for i in $(echo $RC)
 do
   . $i
 done

@@ -12,7 +12,7 @@ export PATH=$USERPATH:$PATH
 
 # my environment
 RC=$(find ~ -maxdepth 1 -name ".zshenv.*")
-[ ! -z "$RC" ] && for i in $RC
+[ ! -z "$RC" ] && for i in $(echo $RC)
 do
   . $i
 done
