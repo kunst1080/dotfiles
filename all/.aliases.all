@@ -10,16 +10,23 @@ alias vi=vim
 alias mv='mv -i'
 alias zmv='noglob zmv -W'
 alias fzf='fzf --reverse'
+alias v=vim
+alias vv=vagrant
 
 # tools
 alias zen='nkf -X'
 alias han='nkf -Z4'
 
 # git
+alias g=git
+alias got=git
+alias gt=git
 alias st='git status'
 alias add='git add'
 alias commit='git commit -m $*'
 alias push='git push'
+alias push-force-with-lease='git push --force-with-lease'
+alias push-f='git push --force-with-lease'
 alias giff='git diff -b'
 alias lg='git lg -n 10'
 alias pull='git pull --rebase'
@@ -38,14 +45,5 @@ alias git-interdiff='_git_interdiff'
 alias dk='docker'
 alias dockers='docker ps'
 alias docker-ip='docker ps -q | xargs docker inspect -f "{{.Name}} {{.NetworkSettings.IPAddress }}"'
-
-# todoist
-if /usr/bin/which todoist > /dev/null 2>&1 ; then
-    alias todo=todoist
-    todo-url() {
-        todoist a -d today -L $(todoist labels | grep '@URL$' | awk '$0=$1')
-    }
-    alias todo-neta="todoist a -d today"
-    alias todo-grep="todoist l | grep"
-    alias todo-today="todoist l --filter today"
-fi
+alias docker-unused-images="docker images -f 'dangling=true'"
+alias dki='docker images'

@@ -1,2 +1,0 @@
-alias cask='brew cask'
-alias ls='ls --color'

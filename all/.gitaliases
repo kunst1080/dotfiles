@@ -1,5 +1,11 @@
 [alias]
 git = !exec git
+c = checkout
+b = branch
+cb = checkout -b
+cp = cherry-pick
+a = add
+cm = commit
 branches = branch -a
 tags = tag
 stashes = stash list

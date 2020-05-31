@@ -60,7 +60,9 @@ if [ "`whoami`" = "root" ] ; then
 else
     p_color=yellow
 fi
-PROMPT=$'%B%F{${p_color}}%n@%M%f%b %3F%~%f %1v\n$ '
+#PROMPT=$'%B%F{${p_color}}%n@%M%f%b %3F%~%f %1v\n$ '
+#PROMPT=$'%(?.%{${fg[green]}%}.%{${fg[red]}%})%(?!(o・∇・o%)!(*>△ <%)) %3F%~%f %1v\n$ '
+PROMPT=$'%3F%~%f %1v %2v\n%(?.%{${fg[green]}%}.%{${fg[red]}%})%(?!(o・∇・o%)!(*>△ <%))< %f'
 
 # peco
 function peco-history-selection() {

@@ -1,5 +1,5 @@
 # env
-#export LANG=ja_JP.UTF-8
+export LANG=ja_JP.UTF-8
 export EDITOR=vim
 export LS_COLORS="di=01;35:ow=01;31:tw=01;31"
 
