@@ -1,20 +1,19 @@
 #!/bin/bash
 
-set -u
+set -eu
 
 ROOT=$(cd $(dirname $0) && pwd)
 
 cd $HOME
 
 main() {
-  ARCH=
   setARCH
   echo "ARCH = $ARCH"
   echo
   
   relinks $ROOT/all .
-  relinks $ROOT/$ARCH .
-  relinks $ROOT/config .config
+  test -v ARCH && relinks $ROOT/$ARCH .
+#  relinks $ROOT/config .config
   [ $# -ge 1 ] && relinks $ROOT/$1 .
 
   echo
@@ -32,14 +31,16 @@ relinks() {
         dest=$PWD/$2/$name
     fi  
     echo " ln -s $f"
-    [ -h $dest ] && unlink $dest
+    [ -h $dest ] && unlink $dest || true
     ln -s $f $dest
   done
 }
 
 setARCH() {
   [ -e /etc/debian_version ] && ARCH=linux
+  [ -e /etc/os-release ] && ARCH=linux
   [ "`uname`" = "Darwin" ] && ARCH=mac
+  return 0
 }
 
 main $*
