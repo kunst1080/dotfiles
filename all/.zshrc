@@ -29,59 +29,6 @@ setopt hist_ignore_dups     # ignore duplication command history list
 setopt share_history        # share command history data 
 setopt histignorespace
 setopt hist_no_store
-zshaddhistory() {
-    local line=${1%%$'\n'}
-    local cmd=${line%% *}
-    [[ ${#line} -ge 5
-        && ${cmd} != (l|l[sal])
-        && ${cmd} != (c|cd)
-        && ${cmd} != (m|man)
-        && ${cmd} != (todo)
-    ]]
-}
-
-
-# git setting
-zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' stagedstr "+"    # 適当な文字列に変更する
-zstyle ':vcs_info:git:*' unstagedstr "-"  # 適当の文字列に変更する
-zstyle ':vcs_info:git:*' formats '[%b]%c%u'
-zstyle ':vcs_info:git:*' actionformats '[%b|%a]%c%u'
-_update_vcs_info_msg() {
-    psvar=()
-    LANG=en_US.UTF-8 vcs_info
-    psvar[1]="$vcs_info_msg_0_"
-}
-add-zsh-hook precmd _update_vcs_info_msg
-
-# prompt
-if [ "`whoami`" = "root" ] ; then
-    p_color=blue
-else
-    p_color=yellow
-fi
-#PROMPT=$'%B%F{${p_color}}%n@%M%f%b %3F%~%f %1v\n$ '
-#PROMPT=$'%(?.%{${fg[green]}%}.%{${fg[red]}%})%(?!(o・∇・o%)!(*>△ <%)) %3F%~%f %1v\n$ '
-PROMPT=$'%3F%~%f %1v %2v\n%(?.%{${fg[green]}%}.%{${fg[red]}%})%(?!(o・∇・o%)!(*>△ <%))< %f'
-
-# peco
-function peco-history-selection() {
-    BUFFER=`history -n -r 1 | awk '!a[$0]++' | peco`
-    CURSOR=$#BUFFER
-    zle reset-prompt
-}
-zle -N peco-history-selection
-bindkey '^R' peco-history-selection
-
-# conoha
-if [ -r ~/.conoha.conf ] ; then
-    . ~/.conoha.conf
-fi
-
-# rbenv
-if /usr/bin/which rbenv > /dev/null 2>&1 ; then
-  eval "$(rbenv init -)"
-fi
 
 # alias
 . ~/.aliases
@@ -92,3 +39,4 @@ RC=$(find ~ -maxdepth 1 -name ".zshrc.*")
 do
   . $i
 done
+

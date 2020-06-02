@@ -1,10 +1,5 @@
-# env
-export LANG=ja_JP.UTF-8
-export EDITOR=vim
-export LS_COLORS="di=01;35:ow=01;31:tw=01;31"
-
 # PATH
-for i in sbin bin
+for i in sbin bin .local/bin
 do
   USERPATH=$USERPATH:$HOME/$i
 done
