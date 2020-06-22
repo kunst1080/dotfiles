@@ -12,7 +12,7 @@ main() {
   echo
   
   relinks $ROOT/all .
-  test -v ARCH && relinks $ROOT/$ARCH .
+  test -z "$ARCH" && relinks $ROOT/$ARCH .
 #  relinks $ROOT/config .config
   [ $# -ge 1 ] && relinks $ROOT/$1 .
 
@@ -37,9 +37,9 @@ relinks() {
 }
 
 setARCH() {
+  ARCH=
   [ -e /etc/debian_version ] && ARCH=linux
   [ -e /etc/os-release ] && ARCH=linux
-  [ "`uname`" = "Darwin" ] && ARCH=mac
   return 0
 }
 
